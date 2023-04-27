@@ -1,5 +1,16 @@
 version: '2'
 services:
+
+  db:
+    image: mariadb
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
   php:
     image: yiisoftware/yii2-php:7.4-apache
     volumes:
